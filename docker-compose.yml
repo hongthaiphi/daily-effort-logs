@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  effort-tracker-bot:
+    build: .
+    container_name: effort-tracker-bot
+    environment:
+      TELEGRAM_BOT_TOKEN: ${TELEGRAM_BOT_TOKEN}
+      TZ: Asia/Ho_Chi_Minh
+    volumes:
+      - ./data:/app
+      - ./effort_tracker.db:/app/effort_tracker.db
+      - ./charts:/app/charts
+    restart: always
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
