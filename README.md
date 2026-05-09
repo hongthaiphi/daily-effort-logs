@@ -219,6 +219,42 @@ Trong `bot.py`, các hàm `stats_command`, `chart_command`:
 stats = get_stats(user.id, 30)  # 30 ngày, đổi thành con số khác
 ```
 
+## 🔔 Hệ thống Reminder (Nhắc nhở)
+
+Bot có hệ thống nhắc nhở tự động và manual:
+
+### Reminder tự động (trong bot)
+Bot tự động gửi nhắc nhở lúc **8h tối** mỗi ngày tới tất cả người dùng.
+
+### Reminder Manual (remind.py)
+Script `remind.py` cho phép gửi nhắc nhở theo yêu cầu:
+
+**Chạy thủ công:**
+```bash
+python remind.py
+```
+
+**Chạy qua Cron (Linux/Mac):**
+```bash
+crontab -e
+# Thêm dòng này để chạy lúc 8 AM hàng ngày:
+0 8 * * * cd /path/to/bot && /usr/bin/python3 remind.py >> remind.log 2>&1
+```
+
+**Hoặc dùng shell script:**
+```bash
+./run_reminder.sh
+```
+
+Xem chi tiết: [REMIND.md](REMIND.md)
+
+**Tính năng:**
+- Gửi tới tất cả người dùng
+- Kiểm tra xem người dùng đã ghi điểm chưa
+- Nếu chưa: gửi lời nhắc nhở
+- Nếu rồi: xác nhận với điểm hiện tại
+- Ghi log chi tiết (successful/failed)
+
 ## 🐛 Khắc phục sự cố
 
 ### Bot không gửi nhắc nhở

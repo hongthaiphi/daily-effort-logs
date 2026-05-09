@@ -1,0 +1,36 @@
+# Crontab example for running daily reminders
+# Copy and customize this file based on your needs
+
+# Format: minute hour day_of_month month day_of_week command
+
+# ========== OPTION 1: Run at 8:00 AM daily ==========
+0 8 * * * cd /Users/phihongthai/Documents/claude/telegrambotEffort && /usr/bin/python3 remind.py >> remind.log 2>&1
+
+# ========== OPTION 2: Run at 8:00 PM daily ==========
+# 0 20 * * * cd /Users/phihongthai/Documents/claude/telegrambotEffort && /usr/bin/python3 remind.py >> remind.log 2>&1
+
+# ========== OPTION 3: Run at 7:00 PM daily ==========
+# 0 19 * * * cd /Users/phihongthai/Documents/claude/telegrambotEffort && /usr/bin/python3 remind.py >> remind.log 2>&1
+
+# ========== OPTION 4: Run multiple times a day ==========
+# Morning (8 AM) and Evening (8 PM)
+# 0 8,20 * * * cd /Users/phihongthai/Documents/claude/telegrambotEffort && /usr/bin/python3 remind.py >> remind.log 2>&1
+
+# ========== OPTION 5: Run every 6 hours ==========
+# 0 */6 * * * cd /Users/phihongthai/Documents/claude/telegrambotEffort && /usr/bin/python3 remind.py >> remind.log 2>&1
+
+# INSTRUCTIONS:
+# 1. Edit this file with your desired schedule
+# 2. Copy and paste into: crontab -e
+# 3. Make sure to export TELEGRAM_BOT_TOKEN before running
+#
+# Example setup:
+# - Open terminal
+# - Run: export TELEGRAM_BOT_TOKEN="your_bot_token"
+# - Run: crontab -e
+# - Paste your chosen cron line
+# - Save and exit
+#
+# To verify cron is running:
+# - Check logs: tail -f remind.log
+# - List active crons: crontab -l
