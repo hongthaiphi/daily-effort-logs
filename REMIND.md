@@ -19,22 +19,25 @@ Script này gửi tin nhắn nhắc nhở tới tất cả người dùng của 
 python remind.py
 ```
 
-### 2. Chạy hàng ngày qua Cron (Linux/Mac)
+### 2. Chạy hàng ngày qua Cron (Linux/Mac) - ✅ RECOMMENDED
 
-Mở crontab:
+**Sử dụng wrapper script** (an toàn, xử lý virtual environment tự động):
+
 ```bash
 crontab -e
 ```
 
 Thêm dòng này để chạy lúc **8:00 AM** hàng ngày:
 ```cron
-0 8 * * * cd /Users/phihongthai/Documents/claude/telegrambotEffort && /usr/bin/python3 remind.py >> remind.log 2>&1
+0 8 * * * /Users/phihongthai/Documents/claude/telegrambotEffort/run_remind_cron.sh
 ```
 
-Hoặc để chạy vào **20:00 (8 PM)**:
+**Hoặc** để chạy vào **20:00 (8 PM)**:
 ```cron
-0 20 * * * cd /Users/phihongthai/Documents/claude/telegrambotEffort && /usr/bin/python3 remind.py >> remind.log 2>&1
+0 20 * * * /Users/phihongthai/Documents/claude/telegrambotEffort/run_remind_cron.sh
 ```
+
+👉 **Chi tiết setup:** xem [CRON_SETUP.md](CRON_SETUP.md)
 
 ### 3. Chạy hàng ngày qua Docker
 

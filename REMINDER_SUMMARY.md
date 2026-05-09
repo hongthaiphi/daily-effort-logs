@@ -51,6 +51,27 @@ Shell script để chạy reminder dễ dàng.
 
 ---
 
+### 3b. **run_remind_cron.sh** (1.1 KB) - ✅ CHO CRON
+Wrapper script an toàn để chạy trong cron job.
+
+**Tính năng:**
+- Tự động tìm virtual environment
+- Xử lý environment variables đúng
+- Full error logging + exit code handling
+- Không cần `source` venv
+- Dùng cho crontab (phương pháp được khuyến nghị)
+
+**Setup cron:**
+```bash
+crontab -e
+# Thêm dòng:
+0 8 * * * /Users/phihongthai/Documents/claude/telegrambotEffort/run_remind_cron.sh
+```
+
+👉 **Chi tiết:** xem [CRON_SETUP.md](CRON_SETUP.md)
+
+---
+
 ### 4. **REMIND.md** (3.2 KB)
 Hướng dẫn chi tiết về hệ thống reminder.
 
@@ -88,12 +109,14 @@ export TELEGRAM_BOT_TOKEN="your_token"
 python remind.py
 ```
 
-### Cách 2: Chạy hàng ngày (Cron)
+### Cách 2: Chạy hàng ngày (Cron) - ✅ RECOMMENDED
 ```bash
 crontab -e
 # Thêm dòng:
-0 8 * * * cd /Users/phihongthai/Documents/claude/telegrambotEffort && /usr/bin/python3 remind.py >> remind.log 2>&1
+0 8 * * * /Users/phihongthai/Documents/claude/telegrambotEffort/run_remind_cron.sh
 ```
+
+**Chi tiết cài đặt:** xem [CRON_SETUP.md](CRON_SETUP.md)
 
 ### Cách 3: Chạy qua shell script
 ```bash
